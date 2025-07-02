@@ -1,0 +1,314 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --bg: #f7f9fb;
+  --bg-dark: #181c22;
+  --primary: #2563eb;
+  --primary-hover: #1e40af;
+  --accent: #64748b;
+  --text: #23272f;
+  --text-light: #f7f9fb;
+  --card: #fff;
+  --card-dark: #23272f;
+  --border: #e5e7eb;
+  --border-dark: #2d323a;
+  --shadow: 0 2px 16px rgba(0,0,0,0.07);
+  --transition: 0.18s cubic-bezier(.4,0,.2,1);
+}
+body, html {
+  height: 100%;
+}
+body {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition);
+}
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+.container {
+  min-height: 100vh;
+  min-width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: background var(--transition), border var(--transition);
+}
+body.dark .container {
+  background: var(--card-dark);
+  border: 1px solid var(--border-dark);
+}
+header, main, footer {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-top: 56px;
+  padding-bottom: 12px;
+  background: transparent;
+  z-index: 2;
+  position: relative;
+  transition: box-shadow var(--transition);
+}
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 1px;
+  text-align: center;
+  flex: 1;
+  transition: color var(--transition);
+}
+.hardcore {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+#toggle-dark {
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition), outline var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+  box-shadow: 0 1px 4px #0001;
+}
+#toggle-dark:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  background: var(--primary);
+  box-shadow: 0 2px 8px #2563eb33;
+}
+#toggle-dark:hover {
+  background: var(--primary);
+  box-shadow: 0 2px 8px #2563eb33;
+}
+body.dark #toggle-dark:hover, body.dark #toggle-dark:focus {
+  background: var(--primary-hover);
+}
+#icon-darkmode svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  fill: var(--accent);
+  transition: fill var(--transition);
+}
+#todo-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+#todo-input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 7px;
+  border: 1.5px solid var(--border);
+  font-size: 1.08rem;
+  background: transparent;
+  color: inherit;
+  outline: none;
+  transition: border var(--transition), box-shadow var(--transition);
+}
+#todo-input:focus {
+  border: 1.5px solid var(--primary);
+  box-shadow: 0 0 0 2px #2563eb22;
+}
+#todo-form button {
+  background: var(--primary);
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: none;
+}
+#todo-form button:hover, #todo-form button:focus {
+  background: var(--primary-hover);
+  transform: scale(1.07);
+  box-shadow: 0 2px 8px #2563eb33;
+}
+.icon-add svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  fill: #fff;
+  transition: fill var(--transition);
+}
+#todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+  min-height: 120px;
+  transition: min-height var(--transition);
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  background: var(--card);
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  padding: 13px 16px;
+  box-shadow: 0 2px 8px #0001;
+  transition: background var(--transition), border var(--transition), box-shadow var(--transition), opacity 0.25s, transform 0.25s;
+  position: relative;
+  animation: fadeIn 0.5s cubic-bezier(.4,0,.2,1);
+}
+body.dark .todo-item {
+  background: #23272f;
+  border: 1.5px solid var(--border-dark);
+  box-shadow: 0 2px 12px #0003;
+}
+.todo-item.removing {
+  opacity: 0;
+  transform: translateX(40px) scale(0.97);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.todo-item.completed {
+  opacity: 0.55;
+  text-decoration: line-through;
+  background: var(--border);
+}
+body.dark .todo-item.completed {
+  background: var(--border-dark);
+}
+.todo-text {
+  flex: 1;
+  font-size: 1.08rem;
+  word-break: break-word;
+  color: inherit;
+  transition: color var(--transition);
+}
+.todo-text:focus, .todo-text-editing {
+  background: #f0f4fa;
+  border: 1.5px solid var(--primary);
+  border-radius: 6px;
+  outline: none;
+  color: var(--text);
+}
+body.dark .todo-text:focus, body.dark .todo-text-editing {
+  background: #232a36;
+  border: 1.5px solid var(--primary);
+  color: var(--text-light);
+}
+.todo-actions {
+  display: flex;
+  gap: 8px;
+}
+.todo-actions button {
+  background: none;
+  border: none;
+  color: var(--accent);
+  padding: 4px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.todo-actions button:hover, .todo-actions button:focus {
+  background: var(--primary);
+  color: #fff;
+  transform: scale(1.13);
+  box-shadow: 0 2px 8px #2563eb33;
+}
+body.dark .todo-actions button:hover, body.dark .todo-actions button:focus {
+  background: var(--primary-hover);
+  color: #fff;
+}
+.todo-actions svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: currentColor;
+  transition: fill var(--transition);
+}
+footer {
+  margin-top: 36px;
+  margin-bottom: 24px;
+  text-align: center;
+  color: var(--accent);
+  font-size: 0.98rem;
+  transition: color var(--transition);
+}
+#todo-list:empty::before {
+  content: 'Nenhuma tarefa.';
+  display: block;
+  text-align: center;
+  color: var(--accent);
+  font-size: 1.08rem;
+  margin-top: 48px;
+  opacity: 0.6;
+  letter-spacing: 0.5px;
+  transition: color var(--transition), opacity var(--transition);
+}
+#todo-input:focus, .todo-text:focus, .todo-actions button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  z-index: 1;
+}
+@media (max-width: 600px) {
+  header, main, footer {
+    max-width: 99vw;
+    padding: 0 2vw;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+  header {
+    padding-top: 32px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 600px;
+  }
+  header, main, footer {
+    max-width: 600px;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+} 
