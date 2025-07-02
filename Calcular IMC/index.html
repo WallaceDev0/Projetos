@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de IMC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><span class="icon"> <!-- SVG será inserido via CSS --> </span> Calculadora de IMC</h1>
+      <button id="toggle-dark" aria-label="Alternar modo escuro">
+        <!-- Ícone SVG de lua/sol será inserido via CSS -->
+      </button>
+    </header>
+    <main>
+      <form id="imc-form">
+        <div class="input-group">
+          <label for="altura">Altura (cm)</label>
+          <input type="number" id="altura" name="altura" min="50" max="250" required>
+        </div>
+        <div class="input-group">
+          <label for="peso">Peso (kg)</label>
+          <input type="number" id="peso" name="peso" min="10" max="300" required>
+        </div>
+        <button type="submit" class="calcular-btn">
+          <span class="icon-calc"></span>
+          Calcular IMC
+        </button>
+      </form>
+      <section id="resultado" class="resultado oculto">
+        <div class="valor-imc"></div>
+        <div class="classificacao"></div>
+      </section>
+    </main>
+    <footer>
+      <small>Desenvolvido por WallaceDev 🔥</small>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html> 

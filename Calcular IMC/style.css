@@ -1,0 +1,243 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --cor-bg: #f7f9fb;
+  --cor-bg-sec: #fff;
+  --cor-primaria: #183153;
+  --cor-secundaria: #2d3a4a;
+  --cor-detalhe: #3a7ca5;
+  --cor-texto: #222;
+  --cor-label: #4a5a6a;
+  --cor-btn: #183153;
+  --cor-btn-text: #fff;
+  --cor-btn-hover: #3a7ca5;
+  --cor-footer: #e9eef3;
+  --shadow: 0 4px 24px 0 rgba(24,49,83,0.08);
+  --font: 'Inter', 'Roboto', Arial, sans-serif;
+}
+[data-dark="true"] {
+  --cor-bg: #151a22;
+  --cor-bg-sec: #1b2230;
+  --cor-primaria: #e9eef3;
+  --cor-secundaria: #3a7ca5;
+  --cor-detalhe: #3a7ca5;
+  --cor-texto: #e9eef3;
+  --cor-label: #b0b8c1;
+  --cor-btn: #3a7ca5;
+  --cor-btn-text: #fff;
+  --cor-btn-hover: #183153;
+  --cor-footer: #222a36;
+  --shadow: 0 4px 24px 0 rgba(58,124,165,0.10);
+}
+html, body {
+  height: 100%;
+  font-family: var(--font);
+  background: var(--cor-bg);
+  color: var(--cor-texto);
+  transition: background 0.3s, color 0.3s;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  background: var(--cor-bg-sec);
+  box-shadow: var(--shadow);
+  border-radius: 18px;
+  padding: 2.5rem 2rem 1.5rem 2rem;
+  max-width: 400px;
+  width: 100%;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.icon {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  background: none;
+}
+.icon::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  mask: url('data:image/svg+xml;utf8,<svg width="24" height="24" fill="none" stroke="%23183153" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="16" rx="8"/><path d="M8 16c0-2.21 1.79-4 4-4s4 1.79 4 4"/></svg>') center/contain no-repeat;
+  background: var(--cor-primaria);
+}
+#toggle-dark {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+#toggle-dark:hover {
+  background: var(--cor-footer);
+}
+#toggle-dark::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 24px;
+  mask: url('data:image/svg+xml;utf8,<svg width="24" height="24" fill="none" stroke="%233a7ca5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>') center/contain no-repeat;
+  background: var(--cor-detalhe);
+  transition: background 0.3s;
+}
+[data-dark="true"] #toggle-dark::before {
+  mask: url('data:image/svg+xml;utf8,<svg width="24" height="24" fill="none" stroke="%23e9eef3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/></svg>') center/contain no-repeat;
+  background: var(--cor-primaria);
+}
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+label {
+  font-size: 1rem;
+  color: var(--cor-label);
+  font-weight: 500;
+}
+input[type="number"] {
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--cor-footer);
+  border-radius: 8px;
+  font-size: 1.1rem;
+  background: var(--cor-bg);
+  color: var(--cor-texto);
+  outline: none;
+  transition: border 0.2s;
+}
+input[type="number"]:focus {
+  border: 1.5px solid var(--cor-detalhe);
+}
+.calcular-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--cor-btn);
+  color: var(--cor-btn-text);
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(24,49,83,0.04);
+  transition: background 0.2s, color 0.2s;
+}
+.calcular-btn:hover {
+  background: var(--cor-btn-hover);
+  color: #fff;
+}
+.icon-calc {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  background: none;
+}
+.icon-calc::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  mask: url('data:image/svg+xml;utf8,<svg width="24" height="24" fill="none" stroke="%23fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 8h.01M16 8h.01M8 16h.01M16 16h.01"/></svg>') center/contain no-repeat;
+  background: var(--cor-btn-text);
+}
+.calcular-btn:hover .icon-calc::before {
+  background: #fff;
+}
+.resultado {
+  background: var(--cor-footer);
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px 0 rgba(24,49,83,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: background 0.3s;
+}
+.resultado .valor-imc {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--cor-detalhe);
+}
+.resultado .classificacao {
+  font-size: 1.1rem;
+  color: var(--cor-secundaria);
+  font-weight: 500;
+}
+.resultado.oculto {
+  display: none;
+}
+footer {
+  text-align: center;
+  color: var(--cor-label);
+  font-size: 0.95rem;
+  margin-top: 1rem;
+  background: var(--cor-footer);
+  border-radius: 8px;
+  padding: 0.7rem 0;
+}
+input[type="number"]:focus, button:focus, a:focus {
+  outline: 2.5px solid var(--cor-detalhe);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(58,124,165,0.10);
+  transition: outline 0.2s, box-shadow 0.2s;
+}
+button, .calcular-btn {
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+button:active, .calcular-btn:active {
+  transform: scale(0.97);
+}
+@media (max-width: 600px) {
+  .container {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    max-width: 98vw;
+  }
+  header h1 {
+    font-size: 1.1rem;
+  }
+  .resultado .valor-imc {
+    font-size: 1.5rem;
+  }
+} 
